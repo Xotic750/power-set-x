@@ -48,6 +48,10 @@
     });
 
     it('array', function () {
+      var a = 'abc',
+        b = returnArgs(1, 2, 3),
+        c = { '0': 1, '1': 2, '2': 3, length: 3 };
+
       expect(powerSet([1, 2, 3])).toEqual([
           [],
           [3],
@@ -57,6 +61,17 @@
           [1, 3],
           [1, 2],
           [1, 2, 3]
+      ]);
+
+      expect(powerSet([a, b, c])).toEqual([
+          [],
+          [c],
+          [b],
+          [b, c],
+          [a],
+          [a, c],
+          [a, b],
+          [a, b, c]
       ]);
     });
 
