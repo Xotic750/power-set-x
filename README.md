@@ -47,8 +47,8 @@ behave as closely as possible to ECMAScript 6 (Harmony).
 **Copyright**: Xotic750  
 <a name="exp_module_power-set-x--module.exports"></a>
 ### `module.exports` ⇒ <code>Array.&lt;Array&gt;</code> ⏏
-This method calculates the Power Set of `value`.
-Array parseness is ignored.
+This method calculates the Power Set of `value`. Array sparseness is
+ignored.
 
 **Kind**: Exported member  
 **Returns**: <code>Array.&lt;Array&gt;</code> - The power set of `value`.  

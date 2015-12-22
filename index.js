@@ -73,8 +73,8 @@
     powerSetIt;
 
   /**
-   * This method calculates the Power Set of `value`.
-   * Array parseness is ignored.
+   * This method calculates the Power Set of `value`. Array sparseness is
+   * ignored.
    *
    * @param {Array} value The array like `value` to get the power set of.
    * @return {Array.<Array>} The power set of `value`.
