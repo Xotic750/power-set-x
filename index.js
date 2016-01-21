@@ -41,7 +41,7 @@
  * `es6.shim.js` provides compatibility shims so that legacy JavaScript engines
  * behave as closely as possible to ECMAScript 6 (Harmony).
  *
- * @version 1.0.3
+ * @version 1.0.4
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -54,23 +54,55 @@
   freeze:true, futurehostile:true, latedef:true, newcap:true, nocomma:true,
   nonbsp:true, singleGroups:true, strict:true, undef:true, unused:true,
   es3:true, esnext:false, plusplus:true, maxparams:3, maxdepth:3,
-  maxstatements:21, maxcomplexity:5 */
+  maxstatements:13, maxcomplexity:4 */
 
 /*global module */
 
 ;(function () {
   'use strict';
 
-  var ES = require('es-abstract/es6'),
-    isArrayLike = require('is-array-like-x'),
-    isString = require('is-string'),
-    pPush = Array.prototype.push,
-    pPop = Array.prototype.pop,
-    pSlice = Array.prototype.slice,
-    pForEach = Array.prototype.forEach,
-    sSlice = String.prototype.slice,
-    pCharAt = String.prototype.charAt,
-    powerSetIt;
+  var isArrayLike = require('is-array-like-x');
+  var isString = require('is-string');
+  var pPush = Array.prototype.push;
+  var pPop = Array.prototype.pop;
+  var pSlice = Array.prototype.slice;
+  var pForEach = Array.prototype.forEach;
+  var sSlice = String.prototype.slice;
+  var pCharAt = String.prototype.charAt;
+
+  /**
+   * The Power Set method.
+   *
+   * @private
+   * @param {Array} value The array like `value` to get the power set of.
+   * @return {Array.<Array>} The power set of `value`.
+   */
+  function powerSet(value) {
+    var val = [];
+    if (isArrayLike(value)) {
+      if (value.length < 1) {
+        pPush.call(val, []);
+      } else {
+        var lastElement, object;
+        if (isString(value)) {
+          lastElement = pCharAt.call(value, value.length - 1);
+          object = sSlice.call(value, 0, -1);
+        } else {
+          object = pSlice.call(value);
+          lastElement = pPop.call(object);
+        }
+        pForEach.call(powerSet(object), function (item, index, oSet) {
+          pPush.call(val, item);
+          oSet[index] = item = pSlice.call(item);
+          pPush.call(item, lastElement);
+          pPush.call(val, item);
+        });
+      }
+    } else {
+      pPush.call(val, []);
+    }
+    return val;
+  }
 
   /**
    * This method calculates the Power Set of `value`. Array sparseness is
@@ -80,32 +112,5 @@
    * @return {Array.<Array>} The power set of `value`.
    * @see http://en.wikipedia.org/wiki/Power_set
    */
-  module.exports = powerSetIt = function powerSet(value) {
-      var val = [],
-        object, lastElement;
-
-      if (isArrayLike(value)) {
-        if (value.length < 1) {
-          ES.Call(pPush, val, [[]]);
-        } else {
-          if (isString(value)) {
-            lastElement = ES.Call(pCharAt, value, [value.length - 1]);
-            object = ES.Call(sSlice, value, [0, -1]);
-          } else {
-            object = ES.Call(pSlice, value);
-            lastElement = ES.Call(pPop, object);
-          }
-          ES.Call(pForEach, powerSetIt(object), [function (item, index, oSet) {
-            ES.Call(pPush, val, [item]);
-            oSet[index] = item = ES.Call(pSlice, item);
-            ES.Call(pPush, item, [lastElement]);
-            ES.Call(pPush, val, [item]);
-          }]);
-        }
-      } else {
-        ES.Call(pPush, val, [[]]);
-      }
-
-      return val;
-    };
+  module.exports = powerSet;
 }());
