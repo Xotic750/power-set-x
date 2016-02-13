@@ -1,6 +1,6 @@
 {
   "name": "power-set-x",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "powerSet module.",
   "homepage": "https://github.com/Xotic750/power-set-x",
   "author": {
@@ -28,12 +28,12 @@
     "url": "https://github.com/Xotic750/power-set-x/issues"
   },
   "dependencies": {
-    "is-array-like-x": "^1.0.11",
+    "is-array-like-x": "^1.0.12",
     "is-string": "^1.0.4"
   },
   "devDependencies": {
     "es5-shim": "^4.5.2",
-    "es6-shim": "^0.34.2",
+    "es6-shim": "^0.34.4",
     "json3": "^3.3.2",
     "jscs": "^2.9.0",
     "uglify-js": "^2.6.1",
