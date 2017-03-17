@@ -41,24 +41,27 @@
  * `es6.shim.js` provides compatibility shims so that legacy JavaScript engines
  * behave as closely as possible to ECMAScript 6 (Harmony).
  *
- * @version 1.0.9
+ * @version 1.1.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
  * @module power-set-x
  */
 
-/*jslint maxlen:80, es6:false, white:true */
+/* jslint maxlen:80, es6:true, white:true */
 
-/*jshint bitwise:true, camelcase:true, curly:true, eqeqeq:true, forin:true,
-  freeze:true, futurehostile:true, latedef:true, newcap:true, nocomma:true,
-  nonbsp:true, singleGroups:true, strict:true, undef:true, unused:true,
-  es3:true, esnext:false, plusplus:true, maxparams:3, maxdepth:3,
-  maxstatements:13, maxcomplexity:4 */
+/* jshint bitwise:true, camelcase:true, curly:true, eqeqeq:true, forin:true,
+   freeze:true, futurehostile:true, latedef:true, newcap:true, nocomma:true,
+   nonbsp:true, singleGroups:true, strict:true, undef:true, unused:true,
+   es3:false, esnext:true, plusplus:true, maxparams:1, maxdepth:1,
+   maxstatements:3, maxcomplexity:2 */
 
-/*global module */
+/* eslint strict: 1, max-statements: 1 */
 
-;(function () {
+/* global module */
+
+;(function () { // eslint-disable-line no-extra-semi
+
   'use strict';
 
   var isArrayLike = require('is-array-like-x');
@@ -77,13 +80,14 @@
    * @param {Array} value The array like `value` to get the power set of.
    * @return {Array.<Array>} The power set of `value`.
    */
-  function powerSet(value) {
+  var powerSet = function (value) {
     var val = [];
     if (isArrayLike(value)) {
       if (value.length < 1) {
         pPush.call(val, []);
       } else {
-        var lastElement, object;
+        var lastElement;
+        var object;
         if (isString(value)) {
           lastElement = pCharAt.call(value, value.length - 1);
           object = sSlice.call(value, 0, -1);
@@ -92,17 +96,19 @@
           lastElement = pPop.call(object);
         }
         pForEach.call(powerSet(object), function (item, index, oSet) {
-          pPush.call(val, item);
-          oSet[index] = item = pSlice.call(item);
-          pPush.call(item, lastElement);
-          pPush.call(val, item);
+          var entry = item;
+          pPush.call(val, entry);
+          entry = pSlice.call(entry);
+          oSet[index] = entry;
+          pPush.call(entry, lastElement);
+          pPush.call(val, entry);
         });
       }
     } else {
       pPush.call(val, []);
     }
     return val;
-  }
+  };
 
   /**
    * This method calculates the Power Set of `value`. Array sparseness is

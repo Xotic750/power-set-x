@@ -1,15 +1,19 @@
-/*jslint maxlen:80, es6:false, white:true */
+/* jslint maxlen:80, es6:true, white:true */
 
-/*jshint bitwise:true, camelcase:true, curly:true, eqeqeq:true, forin:true,
-  freeze:true, futurehostile:true, latedef:true, newcap:true, nocomma:true,
-  nonbsp:true, singleGroups:true, strict:true, undef:true, unused:true,
-  es3:true, esnext:false, plusplus:true, maxparams:2, maxdepth:2,
-  maxstatements:12, maxcomplexity:3 */
+/* jshint bitwise:true, camelcase:true, curly:true, eqeqeq:true, forin:true,
+   freeze:true, futurehostile:true, latedef:true, newcap:true, nocomma:true,
+   nonbsp:true, singleGroups:true, strict:true, undef:true, unused:true,
+   es3:false, esnext:true, plusplus:true, maxparams:1, maxdepth:2,
+   maxstatements:12, maxcomplexity:4 */
 
-/*global JSON:true, expect, module, require, describe, it, beforeEach,
-  returnExports */
+/* eslint strict: 1, max-lines: 1, symbol-description: 1, max-nested-callbacks: 1,
+   max-statements: 1, max-statements-per-line: 1 */
 
-(function () {
+/* global JSON:true, expect, module, require, describe, it, beforeEach,
+   returnExports */
+
+;(function () { // eslint-disable-line no-extra-semi
+
   'use strict';
 
   var powerSet;
@@ -21,14 +25,21 @@
     }
     require('json3').runInContext(null, JSON);
     require('es6-shim');
+    var es7 = require('es7-shim');
+    Object.keys(es7).forEach(function (key) {
+      var obj = es7[key];
+      if (typeof obj.shim === 'function') {
+        obj.shim();
+      }
+    });
     powerSet = require('../../index.js');
   } else {
     powerSet = returnExports;
   }
 
-  function returnArgs() {
+  var returnArgs = function () {
     return arguments;
-  }
+  };
 
   describe('powerSet', function () {
     var a, b, c;
@@ -36,9 +47,9 @@
       a = 'abc';
       b = returnArgs(1, 2, 3);
       c = {
-        '0': 1,
-        '1': 2,
-        '2': 3,
+        0: 1,
+        1: 2,
+        2: 3,
         length: 3
       };
     });
@@ -52,13 +63,11 @@
       expect(powerSet(null)).toEqual(expected);
       expect(powerSet(1)).toEqual(expected);
       expect(powerSet(true)).toEqual(expected);
-      /*jslint unused:false */
-      expect(powerSet(function test(a, b) {})).toEqual(expected);
-      /*jslint unused:true */
+      /* jslint unused:false */
+      expect(powerSet(function test(x, y) { return [x, y]; })).toEqual(expected);
+      /* jslint unused:true */
       expect(powerSet([])).toEqual(expected);
-      expect(powerSet({
-        length: 0
-      })).toEqual(expected);
+      expect(powerSet({ length: 0 })).toEqual(expected);
       expect(powerSet(returnArgs())).toEqual(expected);
       expect(powerSet(new Date())).toEqual(expected);
       expect(powerSet(/pattern/g)).toEqual(expected);
@@ -90,9 +99,9 @@
 
     it('object', function () {
       expect(powerSet({
-        '0': 1,
-        '1': 2,
-        '2': 3,
+        0: 1,
+        1: 2,
+        2: 3,
         length: 3
       })).toEqual([
         [],
@@ -106,9 +115,9 @@
       ]);
 
       expect(powerSet({
-        '0': a,
-        '1': b,
-        '2': c,
+        0: a,
+        1: b,
+        2: c,
         length: 3
       })).toEqual([
         [],

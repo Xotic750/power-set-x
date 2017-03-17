@@ -1,4 +1,5 @@
 <a name="module_power-set-x"></a>
+
 ## power-set-x
 <a href="https://travis-ci.org/Xotic750/power-set-x"
 title="Travis status">
@@ -41,11 +42,12 @@ es5-shim.js to be able to work properly.
 `es6.shim.js` provides compatibility shims so that legacy JavaScript engines
 behave as closely as possible to ECMAScript 6 (Harmony).
 
-**Version**: 1.0.9  
-**Author:** Xotic750 <Xotic750@gmail.com>  
+**Version**: 1.1.0  
+**Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
 <a name="exp_module_power-set-x--module.exports"></a>
+
 ### `module.exports` ⇒ <code>Array.&lt;Array&gt;</code> ⏏
 This method calculates the Power Set of `value`. Array sparseness is
 ignored.
