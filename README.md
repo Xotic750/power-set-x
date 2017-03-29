@@ -27,7 +27,7 @@ including the empty set and S itself.
 
 Requires ES3 or above.
 
-**Version**: 1.2.0  
+**Version**: 1.2.1  
 **Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
