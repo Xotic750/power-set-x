@@ -23,7 +23,7 @@
 ## power-set-x
 Calculates the Power Set of a set S.
 
-**Version**: 1.3.0  
+**Version**: 1.4.0  
 **Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  

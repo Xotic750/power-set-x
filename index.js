@@ -1,6 +1,6 @@
 /**
  * @file Calculates the Power Set of a set S.
- * @version 1.3.0
+ * @version 1.4.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -11,7 +11,7 @@
 
 var isArrayLike = require('is-array-like-x');
 var isString = require('is-string');
-var forEach = require('for-each');
+var forEach = require('array-for-each-x');
 var slice = require('array-slice-x');
 
 /**
@@ -27,7 +27,7 @@ var pSet = function powerSet(value) {
   var val = [];
   if (isArrayLike(value)) {
     if (value.length < 1) {
-      val.push([]);
+      val[val.length] = [];
     } else {
       var lastElement;
       var object;
@@ -38,18 +38,20 @@ var pSet = function powerSet(value) {
         object = slice(value);
         lastElement = object.pop();
       }
-      forEach(pSet(object), function (item, index, oSet) {
+
+      forEach(pSet(object), function _each(item, index, oSet) {
         var entry = item;
-        val.push(entry);
+        val[val.length] = entry;
         entry = entry.slice();
         oSet[index] = entry;
-        entry.push(lastElement);
-        val.push(entry);
+        entry[entry.length] = lastElement;
+        val[val.length] = entry;
       });
     }
   } else {
-    val.push([]);
+    val[val.length] = [];
   }
+
   return val;
 };
 
