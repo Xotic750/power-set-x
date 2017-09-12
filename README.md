@@ -23,13 +23,13 @@
 ## power-set-x
 Calculates the Power Set of a set S.
 
-**Version**: 1.4.0  
+**Version**: 1.5.0  
 **Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
 <a name="exp_module_power-set-x--module.exports"></a>
 
-### `module.exports` ⇒ <code>Array.&lt;Array&gt;</code> ⏏
+### `module.exports(value)` ⇒ <code>Array.&lt;Array&gt;</code> ⏏
 This method calculates the Power Set of `value`. Array sparseness is
 ignored.
 
@@ -37,7 +37,7 @@ In mathematics, the power set (or powerset) of any set S,
 written P(S), ℘(S), P(S), ℙ(S) or 2S, is the set of all subsets of S,
 including the empty set and S itself.
 
-**Kind**: Exported member  
+**Kind**: Exported function  
 **Returns**: <code>Array.&lt;Array&gt;</code> - The power set of `value`.  
 **See**: http://en.wikipedia.org/wiki/Power_set  
 
@@ -45,3 +45,9 @@ including the empty set and S itself.
 | --- | --- | --- |
 | value | <code>Array</code> | The array like `value` to get the power set of. |
 
+**Example**  
+```js
+var powerSet = require('power-set-x');
+
+powerSet([1, 2, 3]); // [[], [3], [2], [2, 3], [1], [1, 3], [1, 2], [1, 2, 3]]
+```
