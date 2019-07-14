@@ -7,12 +7,11 @@
  * @module power-set-x
  */
 
-'use strict';
+const isArrayLike = require('is-array-like-x');
+const forEach = require('array-for-each-x');
+const slice = require('array-slice-x');
 
-var isArrayLike = require('is-array-like-x');
-var forEach = require('array-for-each-x');
-var slice = require('array-slice-x');
-var aPop = Array.prototype.pop;
+const aPop = Array.prototype.pop;
 
 /**
  * This method calculates the Power Set of `value`. Array sparseness is
@@ -31,15 +30,16 @@ var aPop = Array.prototype.pop;
  * powerSet([1, 2, 3]); // [[], [3], [2], [2, 3], [1], [1, 3], [1, 2], [1, 2, 3]]
  */
 module.exports = function powerSet(value) {
-  var val = [];
+  const val = [];
+
   if (isArrayLike(value)) {
     if (value.length < 1) {
       val[0] = [];
     } else {
-      var object = slice(value);
-      var lastElement = aPop.call(object);
-      forEach(powerSet(object), function (item, index, oSet) {
-        var entry = item;
+      const object = slice(value);
+      const lastElement = aPop.call(object);
+      forEach(powerSet(object), function(item, index, oSet) {
+        let entry = item;
         val[val.length] = entry;
         entry = slice(entry);
         oSet[index] = entry;
