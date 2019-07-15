@@ -49,7 +49,7 @@
   },
   "dependencies": {
     "array-for-each-x": "^2.3.0",
-    "array-slice-x": "^3.5.0",
+    "array-slice-x": "^4.0.0",
     "is-array-like-x": "^1.8.0"
   },
   "devDependencies": {
