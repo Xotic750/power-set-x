@@ -1,7 +1,6 @@
 import powerSet from '../src/power-set-x';
 
 const returnArgs = function() {
-  /* eslint-disable-next-line prefer-rest-params */
   return arguments;
 };
 
@@ -10,7 +9,6 @@ describe('powerSet', function() {
   let b;
   let c;
 
-  /* eslint-disable-next-line jest/no-hooks */
   beforeEach(function() {
     a = 'abc';
     b = returnArgs(1, 2, 3);
