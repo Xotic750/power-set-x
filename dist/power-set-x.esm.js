@@ -17,7 +17,7 @@ var aPop = [].pop;
  * @see http://en.wikipedia.org/wiki/Power_set
  */
 
-export default function powerSet(value) {
+var powerSet = function powerSet(value) {
   var _this = this;
 
   var val = [];
@@ -44,6 +44,8 @@ export default function powerSet(value) {
   }
 
   return val;
-}
+};
+
+export default powerSet;
 
 //# sourceMappingURL=power-set-x.esm.js.map

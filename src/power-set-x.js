@@ -16,7 +16,7 @@ const aPop = [].pop;
  * @returns {Array.<Array>} The power set of `value`.
  * @see http://en.wikipedia.org/wiki/Power_set
  */
-export default function powerSet(value) {
+const powerSet = function powerSet(value) {
   const val = [];
 
   if (isArrayLike(value)) {
@@ -39,4 +39,6 @@ export default function powerSet(value) {
   }
 
   return val;
-}
+};
+
+export default powerSet;
