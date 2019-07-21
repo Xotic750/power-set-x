@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2015-2017",
-  "date": "2019-07-19T22:02:13.018Z",
+  "date": "2019-07-21T22:50:52.314Z",
   "describe": "",
   "description": "Calculates the Power Set of a set S.",
   "file": "power-set-x.js",
   "hash": "724674695964b08e804a",
   "license": "MIT",
-  "version": "2.0.9"
+  "version": "2.0.10"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
