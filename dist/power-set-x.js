@@ -2,7 +2,7 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2015-2017",
-  "date": "2019-08-06T00:46:25.025Z",
+  "date": "2019-08-06T21:13:07.773Z",
   "describe": "",
   "description": "Calculates the Power Set of a set S.",
   "file": "power-set-x.js",
