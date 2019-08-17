@@ -1,8 +1,9 @@
 import isArrayLike from 'is-array-like-x';
 import forEach from 'array-for-each-x';
 import slice from 'array-slice-x';
+import methodize from 'simple-methodize-x';
 
-const aPop = [].pop;
+const aPop = methodize([].pop);
 
 /**
  * This method calculates the Power Set of `value`. Array sparseness is
@@ -24,8 +25,8 @@ const powerSet = function powerSet(value) {
       val[0] = [];
     } else {
       const object = slice(value);
-      const lastElement = aPop.call(object);
-      forEach(powerSet(object), (item, index, oSet) => {
+      const lastElement = aPop(object);
+      forEach(powerSet(object), function iteratee(item, index, oSet) {
         let entry = item;
         val[val.length] = entry;
         entry = slice(entry);
